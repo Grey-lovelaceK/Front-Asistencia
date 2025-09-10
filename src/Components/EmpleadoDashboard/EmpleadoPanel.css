@@ -1,0 +1,127 @@
+/* EmpleadoPanel.css */
+.empleado-panel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("../Assets/background.jpg") no-repeat center center/cover;
+}
+
+.empleado-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 40px 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.empleado-card h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.empleado-card p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.rol-badge {
+  display: inline-block;
+  background: rgba(173, 216, 230, 0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #e3f2fd;
+}
+
+/* Botones */
+.empleado-card button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-entrada {
+  background: rgba(46, 204, 113, 0.85);
+  color: white;
+}
+
+.btn-entrada:hover {
+  background: rgba(39, 174, 96, 0.95);
+}
+
+.btn-salida {
+  background: rgba(243, 156, 18, 0.85);
+  color: white;
+}
+
+.btn-salida:hover {
+  background: rgba(230, 126, 34, 0.95);
+}
+
+.btn-logout {
+  background: rgba(231, 76, 60, 0.85);
+  color: white;
+}
+
+.btn-logout:hover {
+  background: rgba(192, 57, 43, 0.95);
+}
+
+/* Mensaje */
+.mensaje {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.empleado-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 40px 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+
+
+  animation: fadeInScale 1.2s ease forwards;
+}
+
+.empleado-card button:active {
+  transform: scale(0.96);
+}

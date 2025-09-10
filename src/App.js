@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { useAuth } from "./auth/AuthProvider";
+import LoginForm from "./Components/LoginForm/LoginForm";
+import EmpleadoPanel from "./Components/EmpleadoDashboard/EmpleadoPanel";
+import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 
 function App() {
+  const { usuario, logoutUser, loading } = useAuth();
+
+  // 🔹 Mostrar loading mientras verifica la sesión
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh' 
+      }}>
+        <p>Verificando sesión...</p>
+      </div>
+    );
+  }
+
+  // 🔹 Si no hay usuario autenticado, mostrar login
+  if (!usuario) return <LoginForm />;
+
+  // 🔹 Renderizar según el rol
+  if (usuario.rol === "empleado") {
+    return <EmpleadoPanel onLogout={logoutUser} />;
+  }
+
+  if (usuario.rol === "administrador") {
+    return <AdminDashboard onLogout={logoutUser} />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Rol desconocido: {usuario.rol}</h2>
+      <button onClick={logoutUser}>Cerrar Sesión</button>
     </div>
   );
 }
