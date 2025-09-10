@@ -1,5 +1,5 @@
 // src/api/api.js
-const API_URL = "https://asistenciarestapi.onrender.com/api";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000/api";
 
 // 🔹 Funciones para manejar tokens
 const getAccessToken = () => localStorage.getItem("access_token");
