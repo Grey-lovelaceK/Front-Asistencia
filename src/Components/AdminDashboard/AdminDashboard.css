@@ -1,3 +1,6 @@
+/* ===================================== */
+/* Variables globales */
+/* ===================================== */
 :root {
   --primary: #3498db;
   --primary-dark: #2980b9;
@@ -16,7 +19,9 @@
   --shadow: rgba(0,0,0,0.15);
 }
 
+/* ===================================== */
 /* Dashboard principal */
+/* ===================================== */
 .admin-dashboard {
   max-width: 1200px;
   margin: 0 auto;
@@ -31,7 +36,9 @@
   font-weight: 700;
 }
 
+/* ===================================== */
 /* Navegación */
+/* ===================================== */
 .admin-dashboard nav {
   display: flex;
   justify-content: center;
@@ -63,7 +70,9 @@
   box-shadow: 0 12px 28px var(--shadow);
 }
 
+/* ===================================== */
 /* Contenedores principales */
+/* ===================================== */
 .usuarios-container,
 .reportes-container {
   background: var(--glass-bg);
@@ -95,7 +104,9 @@
   color: var(--text-dark);
 }
 
+/* ===================================== */
 /* Botones */
+/* ===================================== */
 .btn-create,
 .btn-export,
 .btn-edit,
@@ -128,14 +139,16 @@
 
 /* Hover efectos */
 .btn-create:hover { background: var(--primary-dark); transform: scale(1.05); }
-.btn-export:hover { background: var(--success-dark); }
+.btn-export:hover { background: var(--success-dark); transform: scale(1.05); }
 .btn-edit:hover { background: var(--primary-dark); }
 .btn-save:hover { background: var(--success-dark); }
 .btn-cancel:hover { background: var(--neutral-dark); }
 .btn-delete:hover { background: var(--danger-dark); }
 .btn-toggle:hover { opacity: 0.9; transform: scale(1.04); }
 
+/* ===================================== */
 /* Tablas */
+/* ===================================== */
 .table-container {
   overflow-x: auto;
   border-radius: 16px;
@@ -186,6 +199,22 @@
   background: rgba(255, 234, 167, 0.5);
 }
 
+/* Acciones dentro de tablas */
+.table-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.table-actions button {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* ===================================== */
 /* Badges */
 .rol-badge,
 .status-badge,
@@ -203,7 +232,9 @@
 .rol-badge.empleado { background: rgba(25,118,210,0.2); color: #1976d2; }
 .status-badge.active { background: rgba(46,125,50,0.2); color: #2e7d32; }
 .status-badge.inactive { background: rgba(198,40,40,0.2); color: #c62828; }
+.delay-badge { background: rgba(243,156,18,0.2); color: #f39c12; }
 
+/* ===================================== */
 /* Modal Crear Usuario */
 .create-form-overlay {
   position: fixed;
@@ -274,15 +305,31 @@
   margin-top: 20px;
 }
 
+/* ===================================== */
+/* Export Reportes */
+.reportes-container .btn-export {
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 12px;
+  background: var(--success);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.reportes-container .btn-export:hover {
+  background: var(--success-dark);
+  transform: scale(1.05);
+}
+
+/* ===================================== */
 /* Responsive */
 @media (max-width: 768px) {
   .usuarios-header, .section-header { flex-direction: column; align-items: stretch; }
   .table-container { font-size: 13px; }
-  .usuarios-table th, .usuarios-table td { padding: 8px; }
+  .usuarios-table th, .usuarios-table td, .reportes-table th, .reportes-table td { padding: 8px; }
   .form-grid { grid-template-columns: 1fr; }
-  .btn-create, .btn-edit, .btn-save, .btn-cancel, .btn-toggle, .btn-delete {
-    padding: 6px 10px;
-    font-size: 12px;
-    margin: 2px;
-  }
+  .btn-create, .btn-edit, .btn-save, .btn-cancel, .btn-toggle, .btn-delete { padding: 6px 10px; font-size: 12px; margin: 2px; }
 }
