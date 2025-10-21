@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# 🎨 Sistema de Asistencia - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interfaz web moderna en React 18 para control de asistencia con roles diferenciados y exportación a Excel.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel)
 
-In the project directory, you can run:
+## ✨ Características
 
-### `npm start`
+- ✅ Autenticación JWT con refresh automático
+- ✅ Panel diferenciado por roles (Empleado/Admin)
+- ✅ Diseño glassmorphism moderno
+- ✅ Exportación de reportes a Excel
+- ✅ Responsive y con animaciones
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tecnologías
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React 18+
+- React Icons
+- XLSX (exportación Excel)
+- CSS3 con variables
+- Fetch API
 
-### `npm test`
+## 📁 Estructura
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── Components/
+│   ├── AdminDashboard/      # Panel admin + CRUD usuarios + Reportes
+│   ├── EmpleadoDashboard/   # Panel empleado (marcar entrada/salida)
+│   ├── LoginForm/           # Formulario de login
+│   └── Assets/              # Imágenes (background)
+├── api/
+│   └── api.js              # Funciones de API
+├── auth/
+│   └── AuthProvider.jsx    # Context de autenticación
+└── App.js                  # Componente principal
+```
 
-### `npm run build`
+## 🚀 Instalación
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Instalar dependencias
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Crear .env
+echo "REACT_APP_API_URL=http://localhost:8000/api" > .env
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Ejecutar
+npm start
+```
 
-### `npm run eject`
+## ⚙️ Variables de Entorno
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```env
+# Desarrollo
+REACT_APP_API_URL=http://localhost:8000/api
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Producción
+REACT_APP_API_URL=https://tu-api.onrender.com/api
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 👤 Panel de Empleado
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Marcar entrada
+- Marcar salida
+- Mensajes de confirmación en tiempo real
 
-## Learn More
+## 👨‍💼 Panel de Administrador
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Gestión de Usuarios
+- Crear, editar, activar/desactivar y eliminar
+- Exportar lista a Excel
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Reportes (4 tipos)
+1. **Atrasos** - Entradas después de 9:30 AM
+2. **Salidas Anticipadas** - Salidas antes de 5:30 PM
+3. **Inasistencias** - Empleados sin registro
+4. **Historial Completo** - Todas las marcas con filtro por fecha
 
-### Code Splitting
+Cada reporte se puede exportar a Excel individualmente.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔐 Autenticación
 
-### Analyzing the Bundle Size
+- Tokens JWT almacenados en `localStorage`
+- Refresh automático al expirar (reintenta request)
+- Verificación de sesión al cargar la app
+- Logout limpia tokens y redirige al login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Deploy en Vercel
 
-### Making a Progressive Web App
+1. Conectar repo en Vercel
+2. Build command: `npm run build`
+3. Output directory: `build`
+4. Agregar variable: `REACT_APP_API_URL=https://tu-api.onrender.com/api`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 👥 Equipo
 
-### Advanced Configuration
+- Cristian Revilla - Tech Lead
+- Iván González - Backend
+- Ricardo Alvarado - Frontend
+- Alejandro Franco - DevOps & QA
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔗 Enlaces
 
-### Deployment
+- [API Backend](https://github.com/Grey-lovelaceK/asitencia_rest_api)
+- Demo: `https://front-asistencia.vercel.app`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Desarrollado con ❤️ usando React**
