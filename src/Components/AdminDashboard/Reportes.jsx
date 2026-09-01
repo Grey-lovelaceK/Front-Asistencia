@@ -1,11 +1,12 @@
 // src/Components/AdminDashboard/Reportes.jsx
-import './AdminDashboard.css'; 
+import './AdminDashboard.css';
 import React, { useEffect, useState } from "react";
-import { 
-  getReportesAtrasos, 
-  getReportesInasistencias, 
+import { FaClock, FaRunning, FaTimesCircle, FaList } from "react-icons/fa";
+import {
+  getReportesAtrasos,
+  getReportesInasistencias,
   getReportesSalidasAnticipadas,
-  getTodosLosRegistros 
+  getTodosLosRegistros
 } from "../../api/api";
 import * as XLSX from 'xlsx';
 
@@ -121,29 +122,29 @@ const Reportes = () => {
       
       {/* Tabs */}
       <div className="tabs">
-        <button 
+        <button
           className={`tab ${activeTab === 'atrasos' ? 'active' : ''}`}
           onClick={() => setActiveTab('atrasos')}
         >
-          🕐 Atrasos ({atrasos.length})
+          <FaClock /> Atrasos ({atrasos.length})
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === 'salidas' ? 'active' : ''}`}
           onClick={() => setActiveTab('salidas')}
         >
-          🏃 Salidas Anticipadas ({salidasAnticipadas.length})
+          <FaRunning /> Salidas Anticipadas ({salidasAnticipadas.length})
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === 'inasistencias' ? 'active' : ''}`}
           onClick={() => setActiveTab('inasistencias')}
         >
-          ❌ Inasistencias ({inasistencias.length})
+          <FaTimesCircle /> Inasistencias ({inasistencias.length})
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === 'todos' ? 'active' : ''}`}
           onClick={() => setActiveTab('todos')}
         >
-          📋 Todas las Marcas ({filtrarRegistrosPorFecha().length})
+          <FaList /> Todas las Marcas ({filtrarRegistrosPorFecha().length})
         </button>
       </div>
 

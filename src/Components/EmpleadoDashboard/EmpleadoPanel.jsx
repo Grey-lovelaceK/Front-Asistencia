@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaSignInAlt, FaSignOutAlt, FaPowerOff, FaClock } from "react-icons/fa";
 import { marcarEntrada, marcarSalida } from "../../api/api";
 import { useAuth } from "../../auth/AuthProvider";
 import "./EmpleadoPanel.css";
@@ -34,17 +35,18 @@ const EmpleadoPanel = () => {
   return (
     <div className="empleado-panel-container">
       <div className="empleado-card">
-        <h2>Hola {usuario.nombre} 👋</h2>
+        <div className="empleado-card-icon"><FaClock /></div>
+        <h2>Hola, {usuario.nombre}</h2>
         <span className="rol-badge">{usuario.rol.toUpperCase()}</span>
 
         <button className="btn-entrada" onClick={handleEntrada}>
-          Marcar Entrada
+          <FaSignInAlt /> Marcar Entrada
         </button>
         <button className="btn-salida" onClick={handleSalida}>
-          Marcar Salida
+          <FaSignOutAlt /> Marcar Salida
         </button>
         <button className="btn-logout" onClick={handleLogout}>
-          Cerrar sesión
+          <FaPowerOff /> Cerrar sesión
         </button>
 
         {mensaje && <p className="mensaje">{mensaje}</p>}
