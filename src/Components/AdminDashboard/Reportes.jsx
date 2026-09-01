@@ -1,7 +1,7 @@
 // src/Components/AdminDashboard/Reportes.jsx
 import './AdminDashboard.css';
 import React, { useEffect, useState } from "react";
-import { FaClock, FaRunning, FaTimesCircle, FaList } from "react-icons/fa";
+import { FaClock, FaRunning, FaTimesCircle, FaList, FaFileExcel, FaCheckCircle } from "react-icons/fa";
 import {
   getReportesAtrasos,
   getReportesInasistencias,
@@ -118,8 +118,6 @@ const Reportes = () => {
 
   return (
     <div className="reportes-container">
-      <h2>Reportes de Asistencia</h2>
-      
       {/* Tabs */}
       <div className="tabs">
         <button
@@ -154,7 +152,7 @@ const Reportes = () => {
           <div className="section-header">
             <h3>Reporte de Atrasos</h3>
             <button className="btn-export" onClick={exportAtrasosToExcel}>
-              📊 Exportar Atrasos
+              <FaFileExcel /> Exportar
             </button>
           </div>
           
@@ -196,9 +194,7 @@ const Reportes = () => {
               </table>
             </div>
           ) : (
-            <div className="no-data">
-              🎉 ¡No hay atrasos registrados!
-            </div>
+            <div className="no-data"><FaCheckCircle /> No hay atrasos registrados</div>
           )}
         </div>
       )}
@@ -209,7 +205,7 @@ const Reportes = () => {
           <div className="section-header">
             <h3>Reporte de Salidas Anticipadas</h3>
             <button className="btn-export" onClick={exportSalidasAnticipadasToExcel}>
-              📊 Exportar Salidas Anticipadas
+              <FaFileExcel /> Exportar
             </button>
           </div>
           
@@ -251,9 +247,7 @@ const Reportes = () => {
               </table>
             </div>
           ) : (
-            <div className="no-data">
-              🎉 ¡No hay salidas anticipadas registradas!
-            </div>
+            <div className="no-data"><FaCheckCircle /> No hay salidas anticipadas registradas</div>
           )}
         </div>
       )}
@@ -264,7 +258,7 @@ const Reportes = () => {
           <div className="section-header">
             <h3>Reporte de Inasistencias</h3>
             <button className="btn-export" onClick={exportInasistenciasToExcel}>
-              📊 Exportar Inasistencias
+              <FaFileExcel /> Exportar
             </button>
           </div>
           
@@ -302,9 +296,7 @@ const Reportes = () => {
               </table>
             </div>
           ) : (
-            <div className="no-data">
-              🎉 ¡Todos los empleados han marcado asistencia!
-            </div>
+            <div className="no-data"><FaCheckCircle /> Todos los empleados han marcado asistencia</div>
           )}
         </div>
       )}
@@ -322,7 +314,7 @@ const Reportes = () => {
                 className="filter-date"
               />
               <button className="btn-export" onClick={exportTodosRegistrosToExcel}>
-                📊 Exportar Registros
+                <FaFileExcel /> Exportar
               </button>
             </div>
           </div>

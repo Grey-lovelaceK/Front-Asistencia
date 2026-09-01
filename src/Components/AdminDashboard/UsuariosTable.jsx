@@ -1,6 +1,10 @@
 // src/Components/AdminDashboard/UsuariosTable.jsx
-import './AdminDashboard.css'; 
+import './AdminDashboard.css';
 import React, { useEffect, useState } from "react";
+import {
+  FaPlus, FaFileExcel, FaCheck, FaTimes,
+  FaPen, FaLock, FaLockOpen, FaTrash
+} from "react-icons/fa";
 import { getUsuarios, updateUsuario, deleteUsuario, createUsuario } from "../../api/api";
 import * as XLSX from 'xlsx';
 
@@ -167,16 +171,16 @@ const UsuariosTable = () => {
   return (
     <div className="usuarios-container">
       <div className="usuarios-header">
-        <h2>Gestión de Usuarios</h2>
+        <span className="usuarios-count">{usuarios.length} usuario{usuarios.length === 1 ? "" : "s"}</span>
         <div className="header-buttons">
-          <button 
-            className="btn-create" 
+          <button
+            className="btn-create"
             onClick={() => setShowCreateForm(true)}
           >
-            ➕ Crear Usuario
+            <FaPlus /> Crear Usuario
           </button>
           <button className="btn-export" onClick={exportToExcel}>
-            📊 Exportar a Excel
+            <FaFileExcel /> Exportar
           </button>
         </div>
       </div>
@@ -236,10 +240,10 @@ const UsuariosTable = () => {
             </div>
             <div className="form-buttons">
               <button className="btn-save" onClick={handleCreateUser}>
-                ✓ Crear Usuario
+                <FaCheck /> Crear Usuario
               </button>
               <button className="btn-cancel" onClick={cancelCreate}>
-                ✕ Cancelar
+                <FaTimes /> Cancelar
               </button>
             </div>
           </div>
@@ -328,32 +332,35 @@ const UsuariosTable = () => {
                 <td className="actions-cell">
                   {editingUser === usuario.id ? (
                     <>
-                      <button className="btn-save" onClick={saveEdit}>
-                        ✓ Guardar
+                      <button className="btn-icon save" onClick={saveEdit} title="Guardar">
+                        <FaCheck />
                       </button>
-                      <button className="btn-cancel" onClick={cancelEdit}>
-                        ✕ Cancelar
+                      <button className="btn-icon cancel" onClick={cancelEdit} title="Cancelar">
+                        <FaTimes />
                       </button>
                     </>
                   ) : (
                     <>
-                      <button 
-                        className="btn-edit" 
+                      <button
+                        className="btn-icon edit"
                         onClick={() => startEdit(usuario)}
+                        title="Editar"
                       >
-                        ✏️ Editar
+                        <FaPen />
                       </button>
-                      <button 
-                        className={`btn-toggle ${usuario.activo ? 'deactivate' : 'activate'}`}
+                      <button
+                        className={`btn-icon toggle ${usuario.activo ? 'deactivate' : 'activate'}`}
                         onClick={() => handleToggleActivo(usuario)}
+                        title={usuario.activo ? "Desactivar" : "Activar"}
                       >
-                        {usuario.activo ? '🔒 Desactivar' : '🔓 Activar'}
+                        {usuario.activo ? <FaLock /> : <FaLockOpen />}
                       </button>
-                      <button 
-                        className="btn-delete" 
+                      <button
+                        className="btn-icon delete"
                         onClick={() => handleDelete(usuario.id)}
+                        title="Eliminar"
                       >
-                        🗑️ Eliminar
+                        <FaTrash />
                       </button>
                     </>
                   )}

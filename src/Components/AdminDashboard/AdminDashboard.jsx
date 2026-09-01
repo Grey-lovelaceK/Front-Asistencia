@@ -6,6 +6,11 @@ import UsuariosTable from "./UsuariosTable";
 import Reportes from "./Reportes";
 import { logoutUser } from "../../api/api";
 
+const NAV_ITEMS = [
+  { key: "usuarios", label: "Usuarios", title: "Gestión de Usuarios", icon: FaUsers },
+  { key: "reportes", label: "Reportes", title: "Reportes de Asistencia", icon: FaChartBar },
+];
+
 const AdminDashboard = ({ onLogout }) => {
   const [section, setSection] = useState("usuarios");
 
@@ -14,36 +19,42 @@ const AdminDashboard = ({ onLogout }) => {
     onLogout(); // vuelve al Login
   };
 
+  const activeItem = NAV_ITEMS.find((item) => item.key === section);
+
   return (
-    <div className="admin-dashboard">
-      <header className="dashboard-header">
-        <div className="dashboard-title">
-          <FaClock className="dashboard-title-icon" />
-          <h1>Panel de Administrador</h1>
+    <div className="admin-shell">
+      <aside className="admin-sidebar">
+        <div className="sidebar-brand">
+          <FaClock className="sidebar-brand-icon" />
+          <span>Asistencia</span>
         </div>
 
-        <nav>
-          <button
-            className={section === "usuarios" ? "active" : ""}
-            onClick={() => setSection("usuarios")}
-          >
-            <FaUsers /> Usuarios
-          </button>
-          <button
-            className={section === "reportes" ? "active" : ""}
-            onClick={() => setSection("reportes")}
-          >
-            <FaChartBar /> Reportes
-          </button>
-          <button className="btn-logout-nav" onClick={handleLogout}>
-            <FaSignOutAlt /> Cerrar sesión
-          </button>
+        <nav className="sidebar-nav">
+          {NAV_ITEMS.map(({ key, label, icon: Icon }) => (
+            <button
+              key={key}
+              className={section === key ? "active" : ""}
+              onClick={() => setSection(key)}
+            >
+              <Icon /> {label}
+            </button>
+          ))}
         </nav>
-      </header>
 
-      <div className="dashboard-content">
-        {section === "usuarios" && <UsuariosTable />}
-        {section === "reportes" && <Reportes />}
+        <button className="sidebar-logout" onClick={handleLogout}>
+          <FaSignOutAlt /> Cerrar sesión
+        </button>
+      </aside>
+
+      <div className="admin-main">
+        <header className="admin-topbar">
+          <h1>{activeItem?.title}</h1>
+        </header>
+
+        <div className="admin-content">
+          {section === "usuarios" && <UsuariosTable />}
+          {section === "reportes" && <Reportes />}
+        </div>
       </div>
     </div>
   );
